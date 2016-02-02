@@ -15,15 +15,14 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
+
     @player1 = $player1.name
     @player2 = $player2.name
     erb :play
   end
 
-  get '/attack' do
-    @player1 = $player1.name
-    @player2 = $player2.name
-    erb :attack
+  post '/attack' do
+erb :attack
   end
   # start the server if ruby file executed directly
   run! if app_file == $0

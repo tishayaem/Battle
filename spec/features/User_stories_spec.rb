@@ -21,3 +21,11 @@ feature 'Attack' do
   end
 
 end
+
+feature 'Reduce HP' do
+  scenario 'when attack Player 2\'s Hp get reduced' do
+    sign_in_and_play
+    click_button('Attack')
+    expect(find('progress')['value']).to eq('15')
+  end
+end
