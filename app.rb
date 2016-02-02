@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './lib/player'
 
 class Battle < Sinatra::Base
   enable :sessions
@@ -8,18 +9,20 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    session['Player1'] = params[:Player1]
-    session['Player2'] = params[:Player2]
+    $player1 = Player.new(params[:Player1])
+    $player2 = Player.new(params[:Player2])
     redirect '/play'
   end
 
   get '/play' do
-    @player1 = session['Player1']
-    @player2 = session['Player2']
+    @player1 = $player1.name
+    @player2 = $player2.name
     erb :play
   end
 
   get '/attack' do
+    @player1 = $player1.name
+    @player2 = $player2.name
     erb :attack
   end
   # start the server if ruby file executed directly
