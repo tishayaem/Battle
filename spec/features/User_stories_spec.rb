@@ -12,3 +12,12 @@ feature 'Health bar' do
     expect(find('progress')['max']).to eq('100')
   end
 end
+
+feature 'Attack' do
+  scenario 'Player1 can attack Player two and get confirmation' do
+    sign_in_and_play
+    click_button('Attack')
+    expect(page).to have_content('Player2 is under attack')
+  end
+
+end
