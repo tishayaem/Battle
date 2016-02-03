@@ -1,8 +1,11 @@
 <h1><%= @game.name_player_1 %> vs. <%= @game.name_player_2 %></h1>
 
 <body>
-  <%= @game.name_player_2 %> HP: <%= @game.health_player_2 %>
+<p>  <%= @game.name_player_1 %> HP: <%= @game.health_player_1 %> </p>
+<p>  <%= @game.name_player_2 %> HP: <%= @game.health_player_2 %> </p>
 </body>
+
+<p> <%= @game.chosen_name %> to the battlefield </p>
 
 <form action="/attack">
   <input type="submit" value="Attack">

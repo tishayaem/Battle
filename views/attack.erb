@@ -1,4 +1,11 @@
 <h1><%=@game.name_player_1%> attacked <%=@game.name_player_2%></h1>
 <body>
   <%=@game.name_player_2%> HP: <%= @game.health_player_2%>
+
+  <form action="/play">
+    <input type="submit" value="Switch turn">
+    <%@game.switch%>
+  </form>
+
+
 </body>
