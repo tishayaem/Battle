@@ -1,7 +1,7 @@
-<h1><%= @player_1_name %> vs. <%= @player_2_name %></h1>
+<h1><%= @game.name_player_1 %> vs. <%= @game.name_player_2 %></h1>
 
 <body>
-  <%= @player_2_name %> HP: <%= @player_2_health %>
+  <%= @game.name_player_2 %> HP: <%= @game.health_player_2 %>
 </body>
 
 <form action="/attack">
