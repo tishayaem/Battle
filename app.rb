@@ -18,7 +18,6 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @game = $game
-    @player_2_health = $game.health_player_2
     erb :play
   end
 
