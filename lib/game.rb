@@ -1,29 +1,24 @@
 class Game
 
-  attr_reader :player_1, :player_2
+  attr_reader
 
   def initialize(p1, p2)
-    @player_1 = p1
-    @player_2 = p2
+    @players = [p1, p2]
+  end
+
+  def player(number)
+    message = 'Please specify a valid player number'
+    raise message if !number.is_a?(Numeric)
+    raise message if (number > players.size || number <= 0 )
+    players[number - 1]
   end
 
   def attack(opponent)
     opponent.receive_damage
   end
 
-  def player_1_name
-    @player_1.name
-  end
+  # current_player
 
-  def player_2_name
-    @player_2.name
-  end
-
-  def player_1_hp
-    @player_1.hit_points
-  end
-
-  def player_2_hp
-    @player_2.hit_points
-  end
+  private
+  attr_reader :players
 end

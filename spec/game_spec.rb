@@ -9,39 +9,38 @@ describe Game do
   let(:p1) { double :player, name: player_1_name, hit_points: player_1_hp }
   let(:p2) { double :player, name: player_2_name, hit_points: player_2_hp }
 
-  describe '#player_1' do
-    it 'returns the first player' do
-      expect(game.player_1).to eq p1
+  describe '#player' do
+    context 'when passed 1' do
+      it 'returns the first player' do
+        expect(game.player(1)).to be p1
+      end
     end
-  end
 
-  describe '#player_2' do
-    it 'returns the second player' do
-      expect(game.player_2).to eq p2
+    context 'when passed 2' do
+      it 'returns the second player' do
+        expect(game.player(2)).to be p2
+      end
     end
-  end
 
-  describe '#player_1_name' do
-    it 'returns the first player\'s name' do
-      expect(game.player_1_name).to eq player_1_name
+    context 'when passed an invalid player number' do
+      it 'raises an error' do
+        message = 'Please specify a valid player number'
+        expect { game.player(3) }.to raise_error(message)
+      end
     end
-  end
 
-  describe '#player_2_name' do
-    it 'returns the second player\'s name' do
-      expect(game.player_2_name).to eq player_2_name
+    context 'when passed a negative value' do
+      it 'raises an error' do
+        message = 'Please specify a valid player number'
+        expect { game.player(-3) }.to raise_error(message)
+      end
     end
-  end
 
-  describe '#player_1_hp' do
-    it 'returns the first player\'s hit points' do
-      expect(game.player_1_hp).to eq player_1_hp
-    end
-  end
-
-  describe '#player_2_hp' do
-    it 'returns the second player\'s hit points' do
-      expect(game.player_2_hp).to eq player_2_hp
+    context 'when passed a non-numeric value' do
+      it 'raises an error' do
+        message = 'Please specify a valid player number'
+        expect { game.player('invalid') }.to raise_error(message)
+      end
     end
   end
 
