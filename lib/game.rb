@@ -11,5 +11,19 @@ class Game
     opponent.receive_damage
   end
 
+  def player_1_name
+    @player_1.name
+  end
 
+  def player_2_name
+    @player_2.name
+  end
+
+  def player_1_hp
+    @player_1.hit_points
+  end
+
+  def player_2_hp
+    @player_2.hit_points
+  end
 end

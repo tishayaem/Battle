@@ -1,9 +1,9 @@
 <div>
   <p>
-    <h2><%= @p1_name %> [<%= @p1_hp %>hp]</h2>
+    <h2><%= @game.player_1_name %> [<%= @game.player_1_hp %>hp]</h2>
   </p>
   <p>
-    <h2><%= @p2_name %> [<%= @p2_hp %>hp]</h2>
+    <h2><%= @game.player_2_name %> [<%= @game.player_2_hp %>hp]</h2>
   </p>
   <form action='/attack'>
     <input type="submit" value="Attack!">
