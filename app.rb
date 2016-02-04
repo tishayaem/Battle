@@ -1,5 +1,6 @@
 require 'sinatra/base'
-require './lib/player'
+require './lib/player.rb'
+require './lib/game.rb'
 #the above loads the sinatra lib.
 #the below enables class Battle to load sinatra into the class and therefore
 #use 'get' and 'post' etc.
@@ -17,6 +18,7 @@ class Battle < Sinatra::Base
     $player2 = Player.new(params[:name2])
     redirect '/play'
   end
+  #global variable used in above so can access elsewhere.
 
   get '/play' do
     @name1 = $player1.name
@@ -29,7 +31,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @player1 = $player1
     @player2 = $player2
-    @player1.attack(@player2)
+    Game.new.attack(@player2)
     erb(:attack)
   end
 

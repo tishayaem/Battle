@@ -5,7 +5,7 @@ feature "attack player" do
   scenario "User2 attacks player 1" do
     sign_in_and_play
     click_button "Attack!"
-    expect(page).to have_text("Sarah has attacked Mic!")
+    expect(page).to have_text("sarah has attacked mic!")
   end
 
   scenario "reduce HP" do
