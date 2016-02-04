@@ -10,6 +10,12 @@ describe Player do
     end
   end
 
+  describe '#hit_points' do
+    it "returns the player's hit points" do
+      expect(player1.hit_points).to eq described_class::DEFAULT_HIT_POINTS
+    end
+  end
+
   describe '#attack' do
     it 'attacks player 2' do
       expect(player2).to receive(:receive_damage)
