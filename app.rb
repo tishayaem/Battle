@@ -19,6 +19,7 @@ class Battle < Sinatra::Base
   get '/play' do
     # HACK
     @game = $game
+    redirect '/game_over' if @game.opponent_player.hit_points <= 0
     @game.switch_turn
     erb :play
   end
@@ -27,6 +28,11 @@ class Battle < Sinatra::Base
     @game = $game
     @game.attack(@game.opponent_player)
     erb :attack
+  end
+
+  get '/game_over' do
+    @game = $game
+    erb :game_over
   end
 
   # start the server if ruby file executed directly
