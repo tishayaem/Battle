@@ -1,9 +1,10 @@
 class Game
 
-  attr_reader
+  attr_reader :current_turn
 
-  def initialize(p1, p2)
-    @players = [p1, p2]
+  def initialize(player_1, player_2)
+    @players = [player_1, player_2]
+    @current_turn = 1
   end
 
   def player(number)
@@ -17,7 +18,9 @@ class Game
     opponent.receive_damage
   end
 
-  # current_player
+  def opponent
+    players.reject { |player| player == player(current_turn) }.first
+  end
 
   private
   attr_reader :players

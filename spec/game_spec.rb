@@ -9,6 +9,12 @@ describe Game do
   let(:p1) { double :player, name: player_1_name, hit_points: player_1_hp }
   let(:p2) { double :player, name: player_2_name, hit_points: player_2_hp }
 
+  describe '#current_turn' do
+    it 'returns the number of the current player' do
+      expect(game.current_turn).to eq 1
+    end
+  end
+
   describe '#player' do
     context 'when passed 1' do
       it 'returns the first player' do
@@ -50,6 +56,12 @@ describe Game do
     it 'deals damage to opponent' do
       expect(p2).to receive(:receive_damage)
       game.attack(p2)
+    end
+  end
+
+  describe '#opponent' do
+    it 'returns a player that is not the current player' do
+      expect(game.opponent).to eq p2
     end
   end
 end
