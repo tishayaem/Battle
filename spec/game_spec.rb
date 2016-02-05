@@ -9,9 +9,9 @@ describe Game do
   let(:p1) { double :player, name: player_1_name, hit_points: player_1_hp }
   let(:p2) { double :player, name: player_2_name, hit_points: player_2_hp }
 
-  describe '#current_turn' do
+  describe '#current_player_number' do
     it 'returns the number of the current player' do
-      expect(game.current_turn).to eq 1
+      expect(game.current_player_number).to eq described_class::FIRST_PLAYER
     end
   end
 
@@ -50,18 +50,32 @@ describe Game do
     end
   end
 
-  describe '#attack' do
-    it { is_expected.to respond_to(:attack) }
-
-    it 'deals damage to opponent' do
-      expect(p2).to receive(:receive_damage)
-      game.attack(p2)
+  describe '#current_player' do
+    it 'returns the current player for each turn' do
+      expect(game.current_player).to eq \
+        game.player(described_class::FIRST_PLAYER)
     end
   end
 
-  describe '#opponent' do
+  describe '#opponent_player' do
     it 'returns a player that is not the current player' do
-      expect(game.opponent).to eq p2
+      expect(game.opponent_player).not_to eq \
+        game.player(described_class::FIRST_PLAYER)
+    end
+  end
+
+  describe '#attack' do
+    it 'deals damage to opponent' do
+      expect(game.opponent_player).to receive(:receive_damage)
+      game.attack(game.opponent_player)
+    end
+  end
+
+  describe '#switch_turn' do
+    it 'changes the current player number' do
+      game.switch_turn
+      expect(game.current_player_number).not_to eq \
+        described_class::FIRST_PLAYER
     end
   end
 end
